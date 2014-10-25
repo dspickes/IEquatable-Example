@@ -2,7 +2,10 @@
 
 namespace IEquatable.Example
 {
-    public sealed class WowCharacter : IEquatable<WowCharacter>
+    public sealed class WowCharacter :
+        IEquatable<WowCharacter>,
+        IComparable<WowCharacter>,
+        IComparable
     {
         public String Name { get; private set; }
         public String Server { get; private set; }
@@ -48,6 +51,38 @@ namespace IEquatable.Example
         public static Boolean operator !=( WowCharacter first, WowCharacter second )
         {
             return !( first == second );
+        }
+        #endregion
+
+        #region IComparable
+        public Int32 CompareTo( WowCharacter other )
+        {
+            throw new NotImplementedException();
+        }
+
+        public Int32 CompareTo( Object obj )
+        {
+            throw new NotImplementedException();
+        }
+
+        public static Boolean operator >( WowCharacter first, WowCharacter second )
+        {
+            throw new NotImplementedException();
+        }
+
+        public static Boolean operator >=( WowCharacter first, WowCharacter second )
+        {
+            throw new NotImplementedException();
+        }
+
+        public static Boolean operator <( WowCharacter first, WowCharacter second )
+        {
+            throw new NotImplementedException();
+        }
+
+        public static Boolean operator <=( WowCharacter first, WowCharacter second )
+        {
+            throw new NotImplementedException();
         }
         #endregion
     }
