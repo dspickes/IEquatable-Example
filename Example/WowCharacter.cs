@@ -16,7 +16,8 @@ namespace IEquatable.Example
         #region IEquatable
         public Boolean Equals( WowCharacter other )
         {
-            return other != null;
+            if ( ReferenceEquals( other, null ) ) return false;
+            return Name == other.Name;
         }
 
         public override Boolean Equals( Object obj )

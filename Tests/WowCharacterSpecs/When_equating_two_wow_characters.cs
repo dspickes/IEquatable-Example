@@ -252,6 +252,47 @@ namespace IEquatable.Tests.WowCharacterSpecs.When_equating_two_wow_characters
         }
     }
 
+    [TestFixture]
+    public class Given_two_wow_characters_with_a_different_name_and_the_same_server : When_equating_two_wow_characters_spec
+    {
+        [TestFixtureSetUp]
+        public override void SetupFixture()
+        {
+            base.SetupFixture();
+            secondWowCharacter = new WowCharacter( secondWowCharacterName, firstWowCharacterServer );
+        }
+
+        [Test]
+        public void The_equals_method_should_return_false()
+        {
+            Assert.That( firstWowCharacter.Equals( secondWowCharacter ), Is.False );
+        }
+
+        [Test]
+        public void The_base_equals_method_should_return_false()
+        {
+            Assert.That( firstWowCharacter.Equals( ( Object )secondWowCharacter ), Is.False );
+        }
+
+        [Test]
+        public void The_reference_equals_method_should_return_false()
+        {
+            Assert.That( Object.ReferenceEquals( firstWowCharacter, secondWowCharacter ), Is.False );
+        }
+
+        [Test]
+        public void The_equals_operator_should_return_false()
+        {
+            Assert.That( firstWowCharacter == secondWowCharacter, Is.False );
+        }
+
+        [Test]
+        public void The_not_equals_operator_should_return_true()
+        {
+            Assert.That( firstWowCharacter != secondWowCharacter );
+        }
+    }
+
     public abstract class When_equating_two_wow_characters_spec
     {
         protected WowCharacter firstWowCharacter;
