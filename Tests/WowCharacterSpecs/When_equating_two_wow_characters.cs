@@ -47,25 +47,25 @@ namespace IEquatable.Tests.WowCharacterSpecs.When_equating_two_wow_characters
     }
 
     [TestFixture]
-    public class Given_a_non_null_and_null_wow_character : When_equating_two_wow_characters_spec
+    public class Given_a_null_and_non_null_wow_character : When_equating_two_wow_characters_spec
     {
         [TestFixtureSetUp]
         public override void SetupFixture()
         {
             base.SetupFixture();
-            secondWowCharacter = null;
+            firstWowCharacter = null;
         }
 
         [Test]
-        public void The_equals_method_should_return_false()
+        public void The_equals_method_should_throw_a_null_reference_exception()
         {
-            Assert.That( firstWowCharacter.Equals( secondWowCharacter ), Is.False );
+            Assert.That( () => firstWowCharacter.Equals( secondWowCharacter ), Throws.TypeOf<NullReferenceException>() );
         }
 
         [Test]
-        public void The_base_equals_method_should_return_false()
+        public void The_base_equals_method_should_throw_a_null_reference_exception()
         {
-            Assert.That( firstWowCharacter.Equals( ( Object )secondWowCharacter ), Is.False );
+            Assert.That( () => firstWowCharacter.Equals( ( Object )secondWowCharacter ), Throws.TypeOf<NullReferenceException>() );
         }
 
         [Test]
@@ -88,25 +88,25 @@ namespace IEquatable.Tests.WowCharacterSpecs.When_equating_two_wow_characters
     }
 
     [TestFixture]
-    public class Given_a_null_and_non_null_wow_character : When_equating_two_wow_characters_spec
+    public class Given_a_non_null_and_null_wow_character : When_equating_two_wow_characters_spec
     {
         [TestFixtureSetUp]
         public override void SetupFixture()
         {
             base.SetupFixture();
-            firstWowCharacter = null;
+            secondWowCharacter = null;
         }
 
         [Test]
-        public void The_equals_method_should_throw_a_null_reference_exception()
+        public void The_equals_method_should_return_false()
         {
-            Assert.That( () => firstWowCharacter.Equals( secondWowCharacter ), Throws.TypeOf<NullReferenceException>() );
+            Assert.That( firstWowCharacter.Equals( secondWowCharacter ), Is.False );
         }
 
         [Test]
-        public void The_base_equals_method_should_throw_a_null_reference_exception()
+        public void The_base_equals_method_should_return_false()
         {
-            Assert.That( () => firstWowCharacter.Equals( ( Object )secondWowCharacter ), Throws.TypeOf<NullReferenceException>() );
+            Assert.That( firstWowCharacter.Equals( ( Object )secondWowCharacter ), Is.False );
         }
 
         [Test]
@@ -217,8 +217,9 @@ namespace IEquatable.Tests.WowCharacterSpecs.When_equating_two_wow_characters
         [TestFixtureSetUp]
         public override void SetupFixture()
         {
+            secondWowCharacterName = firstWowCharacterName;
+            secondWowCharacterServer = firstWowCharacterServer;
             base.SetupFixture();
-            secondWowCharacter = new WowCharacter( firstWowCharacterName, firstWowCharacterServer );
         }
 
         [Test]
@@ -258,8 +259,8 @@ namespace IEquatable.Tests.WowCharacterSpecs.When_equating_two_wow_characters
         [TestFixtureSetUp]
         public override void SetupFixture()
         {
+            secondWowCharacterServer = firstWowCharacterServer;
             base.SetupFixture();
-            secondWowCharacter = new WowCharacter( secondWowCharacterName, firstWowCharacterServer );
         }
 
         [Test]
@@ -299,8 +300,8 @@ namespace IEquatable.Tests.WowCharacterSpecs.When_equating_two_wow_characters
         [TestFixtureSetUp]
         public override void SetupFixture()
         {
+            secondWowCharacterName = firstWowCharacterName;
             base.SetupFixture();
-            secondWowCharacter = new WowCharacter( firstWowCharacterName, secondWowCharacterServer );
         }
 
         [Test]
