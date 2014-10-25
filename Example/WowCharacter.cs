@@ -26,9 +26,17 @@ namespace IEquatable.Example
             return Equals( obj as WowCharacter );
         }
 
+        const Int32 baseHashPrime = 1212121;
+        const Int32 multipliedHashPrime = 6153577;
         public override Int32 GetHashCode()
         {
-            throw new NotImplementedException();
+            var hash = baseHashPrime;
+            unchecked
+            {
+                hash = hash * multipliedHashPrime + Name.GetHashCode();
+                hash = hash * multipliedHashPrime + Server.GetHashCode();
+            }
+            return hash;
         }
 
         public static Boolean operator ==( WowCharacter first, WowCharacter second )
