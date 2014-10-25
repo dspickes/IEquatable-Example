@@ -57,22 +57,24 @@ namespace IEquatable.Example
         #region IComparable
         public Int32 CompareTo( WowCharacter other )
         {
-            throw new NotImplementedException();
+            return 1;
         }
 
         public Int32 CompareTo( Object obj )
         {
-            throw new NotImplementedException();
+            return CompareTo( ( WowCharacter )obj );
         }
 
         public static Int32 Compare( WowCharacter first, WowCharacter second )
         {
-            return ReferenceEquals( first, second ) ? 0 : -1;
+            if ( ReferenceEquals( first, second ) ) return 0;
+            if ( ReferenceEquals( first, null ) ) return -1; ;
+            return first.CompareTo( second );
         }
 
         public static Boolean operator >( WowCharacter first, WowCharacter second )
         {
-            return false;
+            return Compare( first, second ) > 0;
         }
 
         public static Boolean operator >=( WowCharacter first, WowCharacter second )
@@ -87,7 +89,7 @@ namespace IEquatable.Example
 
         public static Boolean operator <=( WowCharacter first, WowCharacter second )
         {
-            return true;
+            return Compare( first, second ) <= 0;
         }
         #endregion
     }
