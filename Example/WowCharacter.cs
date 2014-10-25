@@ -67,27 +67,27 @@ namespace IEquatable.Example
 
         public static Int32 Compare( WowCharacter first, WowCharacter second )
         {
-            throw new NotImplementedException();
+            return 0;
         }
 
         public static Boolean operator >( WowCharacter first, WowCharacter second )
         {
-            throw new NotImplementedException();
+            return false;
         }
 
         public static Boolean operator >=( WowCharacter first, WowCharacter second )
         {
-            throw new NotImplementedException();
+            return true;
         }
 
         public static Boolean operator <( WowCharacter first, WowCharacter second )
         {
-            throw new NotImplementedException();
+            return false;
         }
 
         public static Boolean operator <=( WowCharacter first, WowCharacter second )
         {
-            throw new NotImplementedException();
+            return true;
         }
         #endregion
     }
