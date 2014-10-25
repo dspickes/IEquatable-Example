@@ -46,15 +46,56 @@ namespace IEquatable.Tests.WowCharacterSpecs.When_equating_two_wow_characters
         }
     }
 
+    [TestFixture]
+    public class Given_a_null_and_non_null_wow_character : When_equating_two_wow_characters_spec
+    {
+        [TestFixtureSetUp]
+        public override void SetupFixture()
+        {
+            base.SetupFixture();
+            secondWowCharacter = null;
+        }
+
+        [Test]
+        public void The_equals_method_should_return_false()
+        {
+            Assert.That( firstWowCharacter.Equals( secondWowCharacter ), Is.False );
+        }
+
+        [Test]
+        public void The_base_equals_method_should_return_false()
+        {
+            Assert.That( firstWowCharacter.Equals( ( Object )secondWowCharacter ), Is.False );
+        }
+
+        [Test]
+        public void The_reference_equals_method_should_return_false()
+        {
+            Assert.That( Object.ReferenceEquals( firstWowCharacter, secondWowCharacter ), Is.False );
+        }
+
+        [Test]
+        public void The_equals_operator_should_return_false()
+        {
+            Assert.That( firstWowCharacter == secondWowCharacter, Is.False );
+        }
+
+        [Test]
+        public void The_not_equals_operator_should_return_true()
+        {
+            Assert.That( firstWowCharacter != secondWowCharacter );
+        }
+    }
+
     public abstract class When_equating_two_wow_characters_spec
     {
         protected WowCharacter firstWowCharacter;
-        protected String firstWowCharacterName;
-        protected String firstWowCharacterServer;
+        protected String firstWowCharacterName = "firstWowCharacterName";
+        protected String firstWowCharacterServer = "firstWowCharacterServer";
 
         protected WowCharacter secondWowCharacter;
-        protected String secondWowCharacterName;
-        protected String secondWowCharacterServer;
+        protected String secondWowCharacterName = "secondWowCharacterName";
+        protected String secondWowCharacterServer = "secondWowCharacterServer";
 
         [TestFixtureSetUp]
         public virtual void SetupFixture()
