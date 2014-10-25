@@ -31,7 +31,7 @@ namespace IEquatable.Example
 
         public static Boolean operator ==( WowCharacter first, WowCharacter second )
         {
-            return ReferenceEquals( first, second );
+            return ReferenceEquals( first, second ) || first.Equals( second );
         }
 
         public static Boolean operator !=( WowCharacter first, WowCharacter second )
