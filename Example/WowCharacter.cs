@@ -16,12 +16,12 @@ namespace IEquatable.Example
         #region IEquatable
         public Boolean Equals( WowCharacter other )
         {
-            return false;
+            return other != null;
         }
 
         public override Boolean Equals( Object obj )
         {
-            return false;
+            return Equals( ( WowCharacter )obj );
         }
 
         public override Int32 GetHashCode()
@@ -31,7 +31,7 @@ namespace IEquatable.Example
 
         public static Boolean operator ==( WowCharacter first, WowCharacter second )
         {
-            return ReferenceEquals( first, null ) && ReferenceEquals( second, null );
+            return ReferenceEquals( first, second );
         }
 
         public static Boolean operator !=( WowCharacter first, WowCharacter second )
