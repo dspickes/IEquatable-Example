@@ -21,7 +21,7 @@ namespace IEquatable.Example
 
         public override Boolean Equals( Object obj )
         {
-            return Equals( ( WowCharacter )obj );
+            return Equals( obj as WowCharacter );
         }
 
         public override Int32 GetHashCode()

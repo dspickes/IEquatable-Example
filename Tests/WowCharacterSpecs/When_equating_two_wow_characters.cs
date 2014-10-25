@@ -128,6 +128,48 @@ namespace IEquatable.Tests.WowCharacterSpecs.When_equating_two_wow_characters
         }
     }
 
+    [TestFixture]
+    public class Given_a_wow_character_and_an_object : When_equating_two_wow_characters_spec
+    {
+        [TestFixtureSetUp]
+        public override void SetupFixture()
+        {
+            base.SetupFixture();
+        }
+
+        [Test]
+        public void The_equals_method_should_throw_an_invalid_cast_exception()
+        {
+            Assert.That( () => firstWowCharacter.Equals( ( WowCharacter )@object ), Throws.TypeOf<InvalidCastException>() );
+        }
+
+        [Test]
+        public void The_base_equals_method_should_return_false()
+        {
+            Assert.That( firstWowCharacter.Equals( @object ), Is.False );
+        }
+
+        [Test]
+        public void The_reference_equals_method_should_return_false()
+        {
+            Assert.That( Object.ReferenceEquals( firstWowCharacter, @object ), Is.False );
+        }
+
+#pragma warning disable 253 // The reference comparison is intended for testing equality
+        [Test]
+        public void The_equals_operator_should_return_false()
+        {
+            Assert.That( firstWowCharacter == @object, Is.False );
+        }
+
+        [Test]
+        public void The_not_equals_operator_should_return_true()
+        {
+            Assert.That( firstWowCharacter != @object );
+        }
+#pragma warning restore 253
+    }
+
     public abstract class When_equating_two_wow_characters_spec
     {
         protected WowCharacter firstWowCharacter;
@@ -137,6 +179,8 @@ namespace IEquatable.Tests.WowCharacterSpecs.When_equating_two_wow_characters
         protected WowCharacter secondWowCharacter;
         protected String secondWowCharacterName = "secondWowCharacterName";
         protected String secondWowCharacterServer = "secondWowCharacterServer";
+
+        protected readonly Object @object = new Object();
 
         [TestFixtureSetUp]
         public virtual void SetupFixture()
