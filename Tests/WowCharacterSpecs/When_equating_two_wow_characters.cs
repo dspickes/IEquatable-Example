@@ -47,7 +47,7 @@ namespace IEquatable.Tests.WowCharacterSpecs.When_equating_two_wow_characters
     }
 
     [TestFixture]
-    public class Given_a_null_and_non_null_wow_character : When_equating_two_wow_characters_spec
+    public class Given_a_non_null_and_null_wow_character : When_equating_two_wow_characters_spec
     {
         [TestFixtureSetUp]
         public override void SetupFixture()
@@ -66,6 +66,47 @@ namespace IEquatable.Tests.WowCharacterSpecs.When_equating_two_wow_characters
         public void The_base_equals_method_should_return_false()
         {
             Assert.That( firstWowCharacter.Equals( ( Object )secondWowCharacter ), Is.False );
+        }
+
+        [Test]
+        public void The_reference_equals_method_should_return_false()
+        {
+            Assert.That( Object.ReferenceEquals( firstWowCharacter, secondWowCharacter ), Is.False );
+        }
+
+        [Test]
+        public void The_equals_operator_should_return_false()
+        {
+            Assert.That( firstWowCharacter == secondWowCharacter, Is.False );
+        }
+
+        [Test]
+        public void The_not_equals_operator_should_return_true()
+        {
+            Assert.That( firstWowCharacter != secondWowCharacter );
+        }
+    }
+
+    [TestFixture]
+    public class Given_a_null_and_non_null_wow_character : When_equating_two_wow_characters_spec
+    {
+        [TestFixtureSetUp]
+        public override void SetupFixture()
+        {
+            base.SetupFixture();
+            firstWowCharacter = null;
+        }
+
+        [Test]
+        public void The_equals_method_should_throw_a_null_reference_exception()
+        {
+            Assert.That( () => firstWowCharacter.Equals( secondWowCharacter ), Throws.TypeOf<NullReferenceException>() );
+        }
+
+        [Test]
+        public void The_base_equals_method_should_throw_a_null_reference_exception()
+        {
+            Assert.That( () => firstWowCharacter.Equals( ( Object )secondWowCharacter ), Throws.TypeOf<NullReferenceException>() );
         }
 
         [Test]
