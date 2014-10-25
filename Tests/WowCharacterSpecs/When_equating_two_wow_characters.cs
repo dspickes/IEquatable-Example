@@ -28,6 +28,12 @@ namespace IEquatable.Tests.WowCharacterSpecs.When_equating_two_wow_characters
         }
 
         [Test]
+        public void The_reference_equals_method_should_return_true()
+        {
+            Assert.That( Object.ReferenceEquals( firstWowCharacter, secondWowCharacter ) );
+        }
+
+        [Test]
         public void The_equals_operator_should_return_true()
         {
             Assert.That( firstWowCharacter == secondWowCharacter );
