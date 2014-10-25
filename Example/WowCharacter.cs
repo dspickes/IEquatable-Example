@@ -17,7 +17,8 @@ namespace IEquatable.Example
         public Boolean Equals( WowCharacter other )
         {
             if ( ReferenceEquals( other, null ) ) return false;
-            return Name == other.Name;
+            return Name == other.Name &&
+                Server == other.Server;
         }
 
         public override Boolean Equals( Object obj )
