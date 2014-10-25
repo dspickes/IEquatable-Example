@@ -67,7 +67,7 @@ namespace IEquatable.Example
 
         public static Int32 Compare( WowCharacter first, WowCharacter second )
         {
-            return 0;
+            return ReferenceEquals( first, second ) ? 0 : -1;
         }
 
         public static Boolean operator >( WowCharacter first, WowCharacter second )
@@ -77,12 +77,12 @@ namespace IEquatable.Example
 
         public static Boolean operator >=( WowCharacter first, WowCharacter second )
         {
-            return true;
+            return Compare( first, second ) >= 0;
         }
 
         public static Boolean operator <( WowCharacter first, WowCharacter second )
         {
-            return false;
+            return Compare( first, second ) < 0;
         }
 
         public static Boolean operator <=( WowCharacter first, WowCharacter second )
