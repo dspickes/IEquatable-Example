@@ -3,7 +3,7 @@ using NUnit.Framework;
 using System;
 using System.Collections.Generic;
 
-namespace IEquatable.Tests.WowCharacterSpecs.When_getting_the_hash_code_of_a_wow_character
+namespace IEquatable.Tests.WowCharacterTests.When_getting_the_hash_code_of_a_wow_character
 {
     [TestFixture]
     public class Given_a_wow_character : When_getting_the_hash_code_of_a_wow_character_spec

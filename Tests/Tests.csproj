@@ -38,10 +38,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="WowCharacterSpecs\When_comparing_two_wow_characters.cs" />
-    <Compile Include="WowCharacterSpecs\When_creating_a_wow_character.cs" />
-    <Compile Include="WowCharacterSpecs\When_equating_two_wow_characters.cs" />
-    <Compile Include="WowCharacterSpecs\When_getting_the_hash_code_of_a_wow_character.cs" />
+    <Compile Include="WowCharacterTests\When_comparing_two_wow_characters.cs" />
+    <Compile Include="WowCharacterTests\When_creating_a_wow_character.cs" />
+    <Compile Include="WowCharacterTests\When_equating_two_wow_characters.cs" />
+    <Compile Include="WowCharacterTests\When_getting_the_hash_code_of_a_wow_character.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

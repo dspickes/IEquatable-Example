@@ -2,7 +2,7 @@
 using NUnit.Framework;
 using System;
 
-namespace IEquatable.Tests.WowCharacterSpecs
+namespace IEquatable.Tests.WowCharacterTests
 {
     [TestFixture]
     public class When_creating_a_wow_character

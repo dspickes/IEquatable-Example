@@ -2,7 +2,7 @@
 using NUnit.Framework;
 using System;
 
-namespace IEquatable.Tests.WowCharacterSpecs.When_comparing_two_wow_characters
+namespace IEquatable.Tests.WowCharacterTests.When_comparing_two_wow_characters
 {
     [TestFixture]
     public class Given_two_null_wow_characters : When_comparing_two_wow_characters_spec
