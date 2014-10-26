@@ -172,6 +172,8 @@ namespace IEquatable.Tests.WowCharacterSpecs.When_equating_two_wow_characters
     [TestFixture]
     public class Given_a_wow_character_and_an_object : When_equating_two_wow_characters_spec
     {
+        readonly Object @object = new Object();
+
         [TestFixtureSetUp]
         public override void SetupFixture()
         {
@@ -384,8 +386,6 @@ namespace IEquatable.Tests.WowCharacterSpecs.When_equating_two_wow_characters
         protected WowCharacter secondWowCharacter;
         protected String secondWowCharacterName = "secondWowCharacterName";
         protected String secondWowCharacterServer = "secondWowCharacterServer";
-
-        protected readonly Object @object = new Object();
 
         [TestFixtureSetUp]
         public virtual void SetupFixture()
