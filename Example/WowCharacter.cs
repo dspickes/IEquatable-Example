@@ -57,6 +57,7 @@ namespace IEquatable.Example
         #region IComparable
         public Int32 CompareTo( WowCharacter other )
         {
+            if ( ReferenceEquals( this, other ) ) return 0;
             return 1;
         }
 
