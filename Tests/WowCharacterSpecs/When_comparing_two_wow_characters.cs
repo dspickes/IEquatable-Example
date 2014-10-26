@@ -342,15 +342,33 @@ namespace IEquatable.Tests.WowCharacterSpecs.When_comparing_two_wow_characters
         }
 
         [Test]
+        public void The_compare_to_method_should_produce_opposite_results_when_swapping_the_first_and_second_wow_characters()
+        {
+            Assert.That( firstWowCharacter.CompareTo( secondWowCharacter ) > 0, Is.Not.EqualTo( secondWowCharacter.CompareTo( firstWowCharacter ) > 0 ) );
+        }
+
+        [Test]
         public void The_non_generic_compare_to_method_should_return_non_zero()
         {
             Assert.That( firstWowCharacter.CompareTo( ( Object )secondWowCharacter ), Is.Not.EqualTo( 0 ) );
         }
 
         [Test]
+        public void The_non_generic_compare_to_method_should_produce_opposite_results_when_swapping_the_first_and_second_wow_characters()
+        {
+            Assert.That( firstWowCharacter.CompareTo( ( Object )secondWowCharacter ) > 0, Is.Not.EqualTo( secondWowCharacter.CompareTo( ( Object )firstWowCharacter ) > 0 ) );
+        }
+
+        [Test]
         public void The_static_compare_method_should_return_non_zero()
         {
             Assert.That( WowCharacter.Compare( firstWowCharacter, secondWowCharacter ), Is.Not.EqualTo( 0 ) );
+        }
+
+        [Test]
+        public void The_static_compare_method_should_produce_opposite_results_when_swapping_the_first_and_second_wow_characters()
+        {
+            Assert.That( WowCharacter.Compare( firstWowCharacter, secondWowCharacter ) > 0, Is.Not.EqualTo( WowCharacter.Compare( secondWowCharacter, firstWowCharacter ) > 0 ) );
         }
 
         [Test]
@@ -369,6 +387,30 @@ namespace IEquatable.Tests.WowCharacterSpecs.When_comparing_two_wow_characters
         public void The_less_than_operator_should_return_the_same_as_the_less_than_or_equal_operator()
         {
             Assert.That( firstWowCharacter < secondWowCharacter, Is.EqualTo( firstWowCharacter <= secondWowCharacter ) );
+        }
+
+        [Test]
+        public void The_greater_than_operator_should_produce_opposite_results_when_swapping_the_first_and_second_wow_characters()
+        {
+            Assert.That( firstWowCharacter > secondWowCharacter, Is.Not.EqualTo( secondWowCharacter > firstWowCharacter ) );
+        }
+
+        [Test]
+        public void The_greater_than_or_equal_operator_should_produce_opposite_results_when_swapping_the_first_and_second_wow_characters()
+        {
+            Assert.That( firstWowCharacter >= secondWowCharacter, Is.Not.EqualTo( secondWowCharacter >= firstWowCharacter ) );
+        }
+
+        [Test]
+        public void The_less_than_operator_should_produce_opposite_results_when_swapping_the_first_and_second_wow_characters()
+        {
+            Assert.That( firstWowCharacter < secondWowCharacter, Is.Not.EqualTo( secondWowCharacter < firstWowCharacter ) );
+        }
+
+        [Test]
+        public void The_less_than_or_equal_operator_should_produce_opposite_results_when_swapping_the_first_and_second_wow_characters()
+        {
+            Assert.That( firstWowCharacter <= secondWowCharacter, Is.Not.EqualTo( secondWowCharacter <= firstWowCharacter ) );
         }
     }
 
@@ -389,15 +431,33 @@ namespace IEquatable.Tests.WowCharacterSpecs.When_comparing_two_wow_characters
         }
 
         [Test]
+        public void The_compare_to_method_should_produce_opposite_results_when_swapping_the_first_and_second_wow_characters()
+        {
+            Assert.That( firstWowCharacter.CompareTo( secondWowCharacter ) > 0, Is.Not.EqualTo( secondWowCharacter.CompareTo( firstWowCharacter ) > 0 ) );
+        }
+
+        [Test]
         public void The_non_generic_compare_to_method_should_return_non_zero()
         {
             Assert.That( firstWowCharacter.CompareTo( ( Object )secondWowCharacter ), Is.Not.EqualTo( 0 ) );
         }
 
         [Test]
+        public void The_non_generic_compare_to_method_should_produce_opposite_results_when_swapping_the_first_and_second_wow_characters()
+        {
+            Assert.That( firstWowCharacter.CompareTo( ( Object )secondWowCharacter ) > 0, Is.Not.EqualTo( secondWowCharacter.CompareTo( ( Object )firstWowCharacter ) > 0 ) );
+        }
+
+        [Test]
         public void The_static_compare_method_should_return_non_zero()
         {
             Assert.That( WowCharacter.Compare( firstWowCharacter, secondWowCharacter ), Is.Not.EqualTo( 0 ) );
+        }
+
+        [Test]
+        public void The_static_compare_method_should_produce_opposite_results_when_swapping_the_first_and_second_wow_characters()
+        {
+            Assert.That( WowCharacter.Compare( firstWowCharacter, secondWowCharacter ) > 0, Is.Not.EqualTo( WowCharacter.Compare( secondWowCharacter, firstWowCharacter ) > 0 ) );
         }
 
         [Test]
@@ -416,6 +476,30 @@ namespace IEquatable.Tests.WowCharacterSpecs.When_comparing_two_wow_characters
         public void The_less_than_operator_should_return_the_same_as_the_less_than_or_equal_operator()
         {
             Assert.That( firstWowCharacter < secondWowCharacter, Is.EqualTo( firstWowCharacter <= secondWowCharacter ) );
+        }
+
+        [Test]
+        public void The_greater_than_operator_should_produce_opposite_results_when_swapping_the_first_and_second_wow_characters()
+        {
+            Assert.That( firstWowCharacter > secondWowCharacter, Is.Not.EqualTo( secondWowCharacter > firstWowCharacter ) );
+        }
+
+        [Test]
+        public void The_greater_than_or_equal_operator_should_produce_opposite_results_when_swapping_the_first_and_second_wow_characters()
+        {
+            Assert.That( firstWowCharacter >= secondWowCharacter, Is.Not.EqualTo( secondWowCharacter >= firstWowCharacter ) );
+        }
+
+        [Test]
+        public void The_less_than_operator_should_produce_opposite_results_when_swapping_the_first_and_second_wow_characters()
+        {
+            Assert.That( firstWowCharacter < secondWowCharacter, Is.Not.EqualTo( secondWowCharacter < firstWowCharacter ) );
+        }
+
+        [Test]
+        public void The_less_than_or_equal_operator_should_produce_opposite_results_when_swapping_the_first_and_second_wow_characters()
+        {
+            Assert.That( firstWowCharacter <= secondWowCharacter, Is.Not.EqualTo( secondWowCharacter <= firstWowCharacter ) );
         }
     }
 
@@ -435,15 +519,33 @@ namespace IEquatable.Tests.WowCharacterSpecs.When_comparing_two_wow_characters
         }
 
         [Test]
+        public void The_compare_to_method_should_produce_opposite_results_when_swapping_the_first_and_second_wow_characters()
+        {
+            Assert.That( firstWowCharacter.CompareTo( secondWowCharacter ) > 0, Is.Not.EqualTo( secondWowCharacter.CompareTo( firstWowCharacter ) > 0 ) );
+        }
+
+        [Test]
         public void The_non_generic_compare_to_method_should_return_non_zero()
         {
             Assert.That( firstWowCharacter.CompareTo( ( Object )secondWowCharacter ), Is.Not.EqualTo( 0 ) );
         }
 
         [Test]
+        public void The_non_generic_compare_to_method_should_produce_opposite_results_when_swapping_the_first_and_second_wow_characters()
+        {
+            Assert.That( firstWowCharacter.CompareTo( ( Object )secondWowCharacter ) > 0, Is.Not.EqualTo( secondWowCharacter.CompareTo( ( Object )firstWowCharacter ) > 0 ) );
+        }
+
+        [Test]
         public void The_static_compare_method_should_return_non_zero()
         {
             Assert.That( WowCharacter.Compare( firstWowCharacter, secondWowCharacter ), Is.Not.EqualTo( 0 ) );
+        }
+
+        [Test]
+        public void The_static_compare_method_should_produce_opposite_results_when_swapping_the_first_and_second_wow_characters()
+        {
+            Assert.That( WowCharacter.Compare( firstWowCharacter, secondWowCharacter ) > 0, Is.Not.EqualTo( WowCharacter.Compare( secondWowCharacter, firstWowCharacter ) > 0 ) );
         }
 
         [Test]
@@ -462,6 +564,30 @@ namespace IEquatable.Tests.WowCharacterSpecs.When_comparing_two_wow_characters
         public void The_less_than_operator_should_return_the_same_as_the_less_than_or_equal_operator()
         {
             Assert.That( firstWowCharacter < secondWowCharacter, Is.EqualTo( firstWowCharacter <= secondWowCharacter ) );
+        }
+
+        [Test]
+        public void The_greater_than_operator_should_produce_opposite_results_when_swapping_the_first_and_second_wow_characters()
+        {
+            Assert.That( firstWowCharacter > secondWowCharacter, Is.Not.EqualTo( secondWowCharacter > firstWowCharacter ) );
+        }
+
+        [Test]
+        public void The_greater_than_or_equal_operator_should_produce_opposite_results_when_swapping_the_first_and_second_wow_characters()
+        {
+            Assert.That( firstWowCharacter >= secondWowCharacter, Is.Not.EqualTo( secondWowCharacter >= firstWowCharacter ) );
+        }
+
+        [Test]
+        public void The_less_than_operator_should_produce_opposite_results_when_swapping_the_first_and_second_wow_characters()
+        {
+            Assert.That( firstWowCharacter < secondWowCharacter, Is.Not.EqualTo( secondWowCharacter < firstWowCharacter ) );
+        }
+
+        [Test]
+        public void The_less_than_or_equal_operator_should_produce_opposite_results_when_swapping_the_first_and_second_wow_characters()
+        {
+            Assert.That( firstWowCharacter <= secondWowCharacter, Is.Not.EqualTo( secondWowCharacter <= firstWowCharacter ) );
         }
     }
 
