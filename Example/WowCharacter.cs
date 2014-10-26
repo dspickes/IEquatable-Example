@@ -59,7 +59,8 @@ namespace IEquatable.Example
         {
             if ( ReferenceEquals( this, other ) ) return 0;
             if ( ReferenceEquals( other, null ) ) return 1;
-            return 0;
+
+            return String.CompareOrdinal( Name, other.Name );
         }
 
         public Int32 CompareTo( Object obj )
