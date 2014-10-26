@@ -63,6 +63,7 @@ namespace IEquatable.Example
 
         public Int32 CompareTo( Object obj )
         {
+            if ( obj != null && !( obj is WowCharacter ) ) throw new ArgumentException( String.Format( "Object '{0}' is not a WoW character.", obj ) );
             return CompareTo( ( WowCharacter )obj );
         }
 

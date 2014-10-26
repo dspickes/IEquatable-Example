@@ -217,6 +217,60 @@ namespace IEquatable.Tests.WowCharacterSpecs.When_comparing_two_wow_characters
         }
     }
 
+    [TestFixture]
+    public class Given_a_wow_character_and_an_object : When_comparing_two_wow_characters_spec
+    {
+        readonly Object @object = new Object();
+
+        [TestFixtureSetUp]
+        public override void SetupFixture()
+        {
+            base.SetupFixture();
+        }
+
+        [Test]
+        public void The_compare_to_method_should_throw_an_invalid_cast_exception()
+        {
+            Assert.That( () => firstWowCharacter.CompareTo( ( WowCharacter )@object ), Throws.TypeOf<InvalidCastException>() );
+        }
+
+        [Test]
+        public void The_non_generic_compare_to_method_should_throw_an_argument_exception()
+        {
+            Assert.That( () => firstWowCharacter.CompareTo( @object ), Throws.ArgumentException );
+        }
+
+        [Test]
+        public void The_static_compare_method_should_throw_an_invalid_cast_exception()
+        {
+            Assert.That( () => WowCharacter.Compare( firstWowCharacter, ( WowCharacter )@object ), Throws.TypeOf<InvalidCastException>() );
+        }
+
+        [Test]
+        public void The_greater_than_operator_should_throw_an_invalid_cast_exception()
+        {
+            Assert.That( () => firstWowCharacter > ( WowCharacter )@object, Throws.TypeOf<InvalidCastException>() );
+        }
+
+        [Test]
+        public void The_greater_than_or_equal_operator_should_throw_an_invalid_cast_exception()
+        {
+            Assert.That( () => firstWowCharacter >= ( WowCharacter )@object, Throws.TypeOf<InvalidCastException>() );
+        }
+
+        [Test]
+        public void The_less_than_operator_should_throw_an_invalid_cast_exception()
+        {
+            Assert.That( () => firstWowCharacter < ( WowCharacter )@object, Throws.TypeOf<InvalidCastException>() );
+        }
+
+        [Test]
+        public void The_less_than_or_equal_operator_should_throw_an_invalid_cast_exception()
+        {
+            Assert.That( () => firstWowCharacter <= ( WowCharacter )@object, Throws.TypeOf<InvalidCastException>() );
+        }
+    }
+
     public abstract class When_comparing_two_wow_characters_spec
     {
         protected WowCharacter firstWowCharacter;
