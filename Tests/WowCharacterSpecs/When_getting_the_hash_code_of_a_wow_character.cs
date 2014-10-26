@@ -118,7 +118,7 @@ namespace IEquatable.Tests.WowCharacterSpecs.When_getting_the_hash_code_of_a_wow
     }
 
     [TestFixture]
-    public class Given_two_different_wow_characters_with_an_inverted_name_and_server : When_getting_the_hash_code_of_a_wow_character_spec
+    public class Given_two_different_wow_characters_with_the_name_and_server_swapped : When_getting_the_hash_code_of_a_wow_character_spec
     {
         [TestFixtureSetUp]
         public override void SetupFixture()
