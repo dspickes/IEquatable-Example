@@ -58,7 +58,8 @@ namespace IEquatable.Example
         public Int32 CompareTo( WowCharacter other )
         {
             if ( ReferenceEquals( this, other ) ) return 0;
-            return 1;
+            if ( ReferenceEquals( other, null ) ) return 1;
+            return 0;
         }
 
         public Int32 CompareTo( Object obj )
