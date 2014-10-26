@@ -129,47 +129,6 @@ namespace IEquatable.Tests.WowCharacterSpecs.When_equating_two_wow_characters
     }
 
     [TestFixture]
-    public class Given_the_same_wow_character_twice : When_equating_two_wow_characters_spec
-    {
-        [TestFixtureSetUp]
-        public override void SetupFixture()
-        {
-            base.SetupFixture();
-            secondWowCharacter = firstWowCharacter;
-        }
-
-        [Test]
-        public void The_equals_method_should_return_true()
-        {
-            Assert.That( firstWowCharacter.Equals( secondWowCharacter ) );
-        }
-
-        [Test]
-        public void The_base_equals_method_should_return_true()
-        {
-            Assert.That( firstWowCharacter.Equals( ( Object )secondWowCharacter ) );
-        }
-
-        [Test]
-        public void The_reference_equals_method_should_return_true()
-        {
-            Assert.That( Object.ReferenceEquals( firstWowCharacter, secondWowCharacter ) );
-        }
-
-        [Test]
-        public void The_equals_operator_should_return_true()
-        {
-            Assert.That( firstWowCharacter == secondWowCharacter );
-        }
-
-        [Test]
-        public void The_not_equals_operator_should_return_false()
-        {
-            Assert.That( firstWowCharacter != secondWowCharacter, Is.False );
-        }
-    }
-
-    [TestFixture]
     public class Given_a_wow_character_and_an_object : When_equating_two_wow_characters_spec
     {
         readonly Object @object = new Object();
@@ -213,167 +172,160 @@ namespace IEquatable.Tests.WowCharacterSpecs.When_equating_two_wow_characters
 #pragma warning restore 253
     }
 
-    [TestFixture]
-    public class Given_two_wow_characters_with_the_same_name_and_server : When_equating_two_wow_characters_spec
+    namespace Given_two_similar_wow_characters
     {
-        [TestFixtureSetUp]
-        public override void SetupFixture()
+        [TestFixture]
+        public class Given_the_same_wow_character_twice : Given_two_similar_wow_characters_spec
         {
-            secondWowCharacterName = firstWowCharacterName;
-            secondWowCharacterServer = firstWowCharacterServer;
-            base.SetupFixture();
+            [TestFixtureSetUp]
+            public override void SetupFixture()
+            {
+                base.SetupFixture();
+                secondWowCharacter = firstWowCharacter;
+            }
+
+            [Test]
+            public void The_reference_equals_method_should_return_true()
+            {
+                Assert.That( Object.ReferenceEquals( firstWowCharacter, secondWowCharacter ) );
+            }
         }
 
-        [Test]
-        public void The_equals_method_should_return_true()
+        [TestFixture]
+        public class Given_two_wow_characters_with_the_same_name_and_server : Given_two_similar_wow_characters_spec
         {
-            Assert.That( firstWowCharacter.Equals( secondWowCharacter ) );
+            [TestFixtureSetUp]
+            public override void SetupFixture()
+            {
+                secondWowCharacterName = firstWowCharacterName;
+                secondWowCharacterServer = firstWowCharacterServer;
+                base.SetupFixture();
+            }
+
+            [Test]
+            public void The_reference_equals_method_should_return_false()
+            {
+                Assert.That( Object.ReferenceEquals( firstWowCharacter, secondWowCharacter ), Is.False );
+            }
         }
 
-        [Test]
-        public void The_base_equals_method_should_return_true()
+        public abstract class Given_two_similar_wow_characters_spec : When_equating_two_wow_characters_spec
         {
-            Assert.That( firstWowCharacter.Equals( ( Object )secondWowCharacter ) );
-        }
+            [TestFixtureSetUp]
+            public override void SetupFixture()
+            {
+                base.SetupFixture();
+            }
 
-        [Test]
-        public void The_reference_equals_method_should_return_false()
-        {
-            Assert.That( Object.ReferenceEquals( firstWowCharacter, secondWowCharacter ), Is.False );
-        }
+            [Test]
+            public void The_equals_method_should_return_true()
+            {
+                Assert.That( firstWowCharacter.Equals( secondWowCharacter ) );
+            }
 
-        [Test]
-        public void The_equals_operator_should_return_true()
-        {
-            Assert.That( firstWowCharacter == secondWowCharacter );
-        }
+            [Test]
+            public void The_base_equals_method_should_return_true()
+            {
+                Assert.That( firstWowCharacter.Equals( ( Object )secondWowCharacter ) );
+            }
 
-        [Test]
-        public void The_not_equals_operator_should_return_false()
-        {
-            Assert.That( firstWowCharacter != secondWowCharacter, Is.False );
+            [Test]
+            public void The_equals_operator_should_return_true()
+            {
+                Assert.That( firstWowCharacter == secondWowCharacter );
+            }
+
+            [Test]
+            public void The_not_equals_operator_should_return_false()
+            {
+                Assert.That( firstWowCharacter != secondWowCharacter, Is.False );
+            }
         }
     }
 
-    [TestFixture]
-    public class Given_two_wow_characters_with_a_different_name_and_the_same_server : When_equating_two_wow_characters_spec
+    namespace Given_two_different_wow_characters
     {
-        [TestFixtureSetUp]
-        public override void SetupFixture()
+        [TestFixture]
+        public class Given_two_wow_characters_with_a_different_name_and_the_same_server : Given_two_different_wow_characters_spec
         {
-            secondWowCharacterServer = firstWowCharacterServer;
-            base.SetupFixture();
+            [TestFixtureSetUp]
+            public override void SetupFixture()
+            {
+                secondWowCharacterServer = firstWowCharacterServer;
+                base.SetupFixture();
+            }
         }
 
-        [Test]
-        public void The_equals_method_should_return_false()
+        [TestFixture]
+        public class Given_two_wow_characters_with_the_same_name_and_a_different_server : Given_two_different_wow_characters_spec
         {
-            Assert.That( firstWowCharacter.Equals( secondWowCharacter ), Is.False );
+            [TestFixtureSetUp]
+            public override void SetupFixture()
+            {
+                secondWowCharacterName = firstWowCharacterName;
+                base.SetupFixture();
+            }
         }
 
-        [Test]
-        public void The_base_equals_method_should_return_false()
+        [TestFixture]
+        public class Given_two_wow_characters_with_different_names_and_servers : Given_two_different_wow_characters_spec
         {
-            Assert.That( firstWowCharacter.Equals( ( Object )secondWowCharacter ), Is.False );
+            [TestFixtureSetUp]
+            public override void SetupFixture()
+            {
+                base.SetupFixture();
+            }
         }
 
-        [Test]
-        public void The_reference_equals_method_should_return_false()
+        [TestFixture]
+        public class Given_two_wow_characters_with_the_name_and_server_swapped : Given_two_different_wow_characters_spec
         {
-            Assert.That( Object.ReferenceEquals( firstWowCharacter, secondWowCharacter ), Is.False );
+            [TestFixtureSetUp]
+            public override void SetupFixture()
+            {
+                secondWowCharacterName = firstWowCharacterServer;
+                secondWowCharacterServer = firstWowCharacterName;
+                base.SetupFixture();
+            }
         }
 
-        [Test]
-        public void The_equals_operator_should_return_false()
+        public abstract class Given_two_different_wow_characters_spec : When_equating_two_wow_characters_spec
         {
-            Assert.That( firstWowCharacter == secondWowCharacter, Is.False );
-        }
+            [TestFixtureSetUp]
+            public override void SetupFixture()
+            {
+                base.SetupFixture();
+            }
 
-        [Test]
-        public void The_not_equals_operator_should_return_true()
-        {
-            Assert.That( firstWowCharacter != secondWowCharacter );
-        }
-    }
+            [Test]
+            public void The_equals_method_should_return_false()
+            {
+                Assert.That( firstWowCharacter.Equals( secondWowCharacter ), Is.False );
+            }
 
-    [TestFixture]
-    public class Given_two_wow_characters_with_the_same_name_and_a_different_server : When_equating_two_wow_characters_spec
-    {
-        [TestFixtureSetUp]
-        public override void SetupFixture()
-        {
-            secondWowCharacterName = firstWowCharacterName;
-            base.SetupFixture();
-        }
+            [Test]
+            public void The_base_equals_method_should_return_false()
+            {
+                Assert.That( firstWowCharacter.Equals( ( Object )secondWowCharacter ), Is.False );
+            }
 
-        [Test]
-        public void The_equals_method_should_return_false()
-        {
-            Assert.That( firstWowCharacter.Equals( secondWowCharacter ), Is.False );
-        }
+            [Test]
+            public void The_reference_equals_method_should_return_false()
+            {
+                Assert.That( Object.ReferenceEquals( firstWowCharacter, secondWowCharacter ), Is.False );
+            }
 
-        [Test]
-        public void The_base_equals_method_should_return_false()
-        {
-            Assert.That( firstWowCharacter.Equals( ( Object )secondWowCharacter ), Is.False );
-        }
+            [Test]
+            public void The_equals_operator_should_return_false()
+            {
+                Assert.That( firstWowCharacter == secondWowCharacter, Is.False );
+            }
 
-        [Test]
-        public void The_reference_equals_method_should_return_false()
-        {
-            Assert.That( Object.ReferenceEquals( firstWowCharacter, secondWowCharacter ), Is.False );
-        }
-
-        [Test]
-        public void The_equals_operator_should_return_false()
-        {
-            Assert.That( firstWowCharacter == secondWowCharacter, Is.False );
-        }
-
-        [Test]
-        public void The_not_equals_operator_should_return_true()
-        {
-            Assert.That( firstWowCharacter != secondWowCharacter );
-        }
-    }
-
-    [TestFixture]
-    public class Given_two_wow_characters_with_different_names_and_servers : When_equating_two_wow_characters_spec
-    {
-        [TestFixtureSetUp]
-        public override void SetupFixture()
-        {
-            base.SetupFixture();
-        }
-
-        [Test]
-        public void The_equals_method_should_return_false()
-        {
-            Assert.That( firstWowCharacter.Equals( secondWowCharacter ), Is.False );
-        }
-
-        [Test]
-        public void The_base_equals_method_should_return_false()
-        {
-            Assert.That( firstWowCharacter.Equals( ( Object )secondWowCharacter ), Is.False );
-        }
-
-        [Test]
-        public void The_reference_equals_method_should_return_false()
-        {
-            Assert.That( Object.ReferenceEquals( firstWowCharacter, secondWowCharacter ), Is.False );
-        }
-
-        [Test]
-        public void The_equals_operator_should_return_false()
-        {
-            Assert.That( firstWowCharacter == secondWowCharacter, Is.False );
-        }
-
-        [Test]
-        public void The_not_equals_operator_should_return_true()
-        {
-            Assert.That( firstWowCharacter != secondWowCharacter );
+            [Test]
+            public void The_not_equals_operator_should_return_true()
+            {
+                Assert.That( firstWowCharacter != secondWowCharacter );
+            }
         }
     }
 

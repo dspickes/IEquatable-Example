@@ -32,106 +32,106 @@ namespace IEquatable.Tests.WowCharacterSpecs.When_getting_the_hash_code_of_a_wow
         }
     }
 
-    [TestFixture]
-    public class Given_the_same_wow_character_twice : When_getting_the_hash_code_of_a_wow_character_spec
+    namespace Given_two_similar_wow_characters
     {
-        [TestFixtureSetUp]
-        public override void SetupFixture()
+        [TestFixture]
+        public class Given_the_same_wow_character_twice : Given_two_similar_wow_characters_spec
         {
-            base.SetupFixture();
-            secondWowCharacter = firstWowCharacter;
+            [TestFixtureSetUp]
+            public override void SetupFixture()
+            {
+                base.SetupFixture();
+                secondWowCharacter = firstWowCharacter;
+            }
         }
 
-        [Test]
-        public void The_hash_codes_should_be_the_same()
+        [TestFixture]
+        public class Given_two_different_wow_characters_with_the_same_name_and_server : Given_two_similar_wow_characters_spec
         {
-            Assert.That( firstWowCharacter.GetHashCode(), Is.EqualTo( secondWowCharacter.GetHashCode() ) );
+            [TestFixtureSetUp]
+            public override void SetupFixture()
+            {
+                secondWowCharacterName = firstWowCharacterName;
+                secondWowCharacterServer = firstWowCharacterServer;
+                base.SetupFixture();
+            }
+        }
+
+        public abstract class Given_two_similar_wow_characters_spec : When_getting_the_hash_code_of_a_wow_character_spec
+        {
+            [TestFixtureSetUp]
+            public override void SetupFixture()
+            {
+                base.SetupFixture();
+            }
+
+            [Test]
+            public void The_hash_codes_should_be_the_same()
+            {
+                Assert.That( firstWowCharacter.GetHashCode(), Is.EqualTo( secondWowCharacter.GetHashCode() ) );
+            }
         }
     }
 
-    [TestFixture]
-    public class Given_two_different_wow_characters_with_the_same_name_and_server : When_getting_the_hash_code_of_a_wow_character_spec
+    namespace Given_two_different_wow_characters
     {
-        [TestFixtureSetUp]
-        public override void SetupFixture()
+        [TestFixture]
+        public class Given_two_different_wow_characters_with_the_same_name_and_a_different_server : Given_two_different_wow_characters_spec
         {
-            secondWowCharacterName = firstWowCharacterName;
-            secondWowCharacterServer = firstWowCharacterServer;
-            base.SetupFixture();
+            [TestFixtureSetUp]
+            public override void SetupFixture()
+            {
+                secondWowCharacterName = firstWowCharacterName;
+                base.SetupFixture();
+            }
         }
 
-        [Test]
-        public void The_hash_codes_should_be_the_same()
+        [TestFixture]
+        public class Given_two_different_wow_characters_with_a_different_name_and_the_same_server : Given_two_different_wow_characters_spec
         {
-            Assert.That( firstWowCharacter.GetHashCode(), Is.EqualTo( secondWowCharacter.GetHashCode() ) );
-        }
-    }
-
-    [TestFixture]
-    public class Given_two_different_wow_characters_with_the_same_name_and_a_different_server : When_getting_the_hash_code_of_a_wow_character_spec
-    {
-        [TestFixtureSetUp]
-        public override void SetupFixture()
-        {
-            secondWowCharacterName = firstWowCharacterName;
-            base.SetupFixture();
+            [TestFixtureSetUp]
+            public override void SetupFixture()
+            {
+                secondWowCharacterServer = firstWowCharacterServer;
+                base.SetupFixture();
+            }
         }
 
-        [Test]
-        public void The_hash_codes_should_be_different()
+        [TestFixture]
+        public class Given_two_different_wow_characters_with_different_names_and_servers : Given_two_different_wow_characters_spec
         {
-            Assert.That( firstWowCharacter.GetHashCode(), Is.Not.EqualTo( secondWowCharacter.GetHashCode() ) );
-        }
-    }
-
-    [TestFixture]
-    public class Given_two_different_wow_characters_with_a_different_name_and_the_same_server : When_getting_the_hash_code_of_a_wow_character_spec
-    {
-        [TestFixtureSetUp]
-        public override void SetupFixture()
-        {
-            secondWowCharacterServer = firstWowCharacterServer;
-            base.SetupFixture();
+            [TestFixtureSetUp]
+            public override void SetupFixture()
+            {
+                base.SetupFixture();
+            }
         }
 
-        [Test]
-        public void The_hash_codes_should_be_different()
+        [TestFixture]
+        public class Given_two_different_wow_characters_with_the_name_and_server_swapped : Given_two_different_wow_characters_spec
         {
-            Assert.That( firstWowCharacter.GetHashCode(), Is.Not.EqualTo( secondWowCharacter.GetHashCode() ) );
-        }
-    }
-
-    [TestFixture]
-    public class Given_two_different_wow_characters_with_different_names_and_servers : When_getting_the_hash_code_of_a_wow_character_spec
-    {
-        [TestFixtureSetUp]
-        public override void SetupFixture()
-        {
-            base.SetupFixture();
+            [TestFixtureSetUp]
+            public override void SetupFixture()
+            {
+                secondWowCharacterName = firstWowCharacterServer;
+                secondWowCharacterServer = firstWowCharacterName;
+                base.SetupFixture();
+            }
         }
 
-        [Test]
-        public void The_hash_codes_should_be_different()
+        public abstract class Given_two_different_wow_characters_spec : When_getting_the_hash_code_of_a_wow_character_spec
         {
-            Assert.That( firstWowCharacter.GetHashCode(), Is.Not.EqualTo( secondWowCharacter.GetHashCode() ) );
-        }
-    }
+            [TestFixtureSetUp]
+            public override void SetupFixture()
+            {
+                base.SetupFixture();
+            }
 
-    [TestFixture]
-    public class Given_two_different_wow_characters_with_the_name_and_server_swapped : When_getting_the_hash_code_of_a_wow_character_spec
-    {
-        [TestFixtureSetUp]
-        public override void SetupFixture()
-        {
-            secondWowCharacterName = firstWowCharacterServer;
-            secondWowCharacterServer = firstWowCharacterName;
-            base.SetupFixture();
-        }
-
-        [Test]
-        public void The_hash_codes_should_be_different()
-        {
-            Assert.That( firstWowCharacter.GetHashCode(), Is.Not.EqualTo( secondWowCharacter.GetHashCode() ) );
+            [Test]
+            public void The_hash_codes_should_be_different()
+            {
+                Assert.That( firstWowCharacter.GetHashCode(), Is.Not.EqualTo( secondWowCharacter.GetHashCode() ) );
+            }
         }
     }
 
