@@ -372,6 +372,53 @@ namespace IEquatable.Tests.WowCharacterSpecs.When_comparing_two_wow_characters
         }
     }
 
+    [TestFixture]
+    public class Given_two_wow_characters_with_the_same_name_and_a_different_server : When_comparing_two_wow_characters_spec
+    {
+        [TestFixtureSetUp]
+        public override void SetupFixture()
+        {
+            secondWowCharacterName = firstWowCharacterName;
+            base.SetupFixture();
+        }
+
+        [Test]
+        public void The_compare_to_method_should_return_non_zero()
+        {
+            Assert.That( firstWowCharacter.CompareTo( secondWowCharacter ), Is.Not.EqualTo( 0 ) );
+        }
+
+        [Test]
+        public void The_non_generic_compare_to_method_should_return_non_zero()
+        {
+            Assert.That( firstWowCharacter.CompareTo( ( Object )secondWowCharacter ), Is.Not.EqualTo( 0 ) );
+        }
+
+        [Test]
+        public void The_static_compare_method_should_return_non_zero()
+        {
+            Assert.That( WowCharacter.Compare( firstWowCharacter, secondWowCharacter ), Is.Not.EqualTo( 0 ) );
+        }
+
+        [Test]
+        public void The_greater_than_operator_should_return_the_opposite_of_the_less_than_operator()
+        {
+            Assert.That( firstWowCharacter > secondWowCharacter, Is.Not.EqualTo( firstWowCharacter < secondWowCharacter ) );
+        }
+
+        [Test]
+        public void The_greater_than_operator_should_return_the_same_as_the_greater_than_or_equal_operator()
+        {
+            Assert.That( firstWowCharacter > secondWowCharacter, Is.EqualTo( firstWowCharacter >= secondWowCharacter ) );
+        }
+
+        [Test]
+        public void The_less_than_operator_should_return_the_same_as_the_less_than_or_equal_operator()
+        {
+            Assert.That( firstWowCharacter < secondWowCharacter, Is.EqualTo( firstWowCharacter <= secondWowCharacter ) );
+        }
+    }
+
     public abstract class When_comparing_two_wow_characters_spec
     {
         protected WowCharacter firstWowCharacter;

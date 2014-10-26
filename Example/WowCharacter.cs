@@ -60,7 +60,9 @@ namespace IEquatable.Example
             if ( ReferenceEquals( this, other ) ) return 0;
             if ( ReferenceEquals( other, null ) ) return 1;
 
-            return String.CompareOrdinal( Name, other.Name );
+            var server = String.CompareOrdinal( Server, other.Server );
+            var name = String.CompareOrdinal( Name, other.Name );
+            return server != 0 ? server : name;
         }
 
         public Int32 CompareTo( Object obj )
