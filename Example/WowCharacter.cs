@@ -19,9 +19,7 @@ namespace IEquatable.Example
         #region IEquatable
         public Boolean Equals( WowCharacter other )
         {
-            if ( ReferenceEquals( other, null ) ) return false;
-            return Name.Equals( other.Name ) &&
-                Server.Equals( other.Server );
+            return CompareTo( other ) == 0;
         }
 
         public override Boolean Equals( Object obj )
@@ -44,13 +42,12 @@ namespace IEquatable.Example
 
         public static Boolean operator ==( WowCharacter first, WowCharacter second )
         {
-            if ( ReferenceEquals( first, null ) ) return ReferenceEquals( second, null );
-            return first.Equals( second );
+            return Compare( first, second ) == 0;
         }
 
         public static Boolean operator !=( WowCharacter first, WowCharacter second )
         {
-            return !( first == second );
+            return Compare( first, second ) != 0;
         }
         #endregion
 
